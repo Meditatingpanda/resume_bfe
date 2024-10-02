@@ -13,8 +13,8 @@ public class Main {
         try (var context = new AnnotationConfigApplicationContext(ProjectConfig.class)) {
             var Person = context.getBean(Person.class);
 
-            Person.getVehicle().getVehicleService().playSound();
-            Person.getVehicle().getVehicleService().rotateTyres();
+           System.out.println(Person.getVehicle());
+           Person.getVehicle().getVehicleService().playSound();
         } catch (BeansException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
