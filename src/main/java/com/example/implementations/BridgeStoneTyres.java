@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 import com.example.types.Tyres;
+
 @Component
 @Primary
 public class BridgeStoneTyres implements Tyres {
