@@ -1,5 +1,6 @@
 package com.example;
 
+import org.springframework.beans.BeansException;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.example.beans.Person;
@@ -9,12 +10,15 @@ public class Main {
 
     public static void main(String[] args) {
 
-        var context = new AnnotationConfigApplicationContext(ProjectConfig.class);
+        try (var context = new AnnotationConfigApplicationContext(ProjectConfig.class)) {
+            var Person = context.getBean(Person.class);
 
-        var Person = context.getBean(Person.class);
-
-        Person.getVehicle().getVehicleService().playSound();
-        Person.getVehicle().getVehicleService().rotateTyres();
+            Person.getVehicle().getVehicleService().playSound();
+            Person.getVehicle().getVehicleService().rotateTyres();
+        } catch (BeansException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 
     }
 
